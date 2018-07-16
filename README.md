@@ -1,10 +1,24 @@
-# kotlin-handson
+# Kotlin Hands-on
 
-# contents
-- getting-started
+# table of contents
+- [Refs/Links](#Refs/Links)
+- [Getting Started](#Getting Started)
+  - [Basic Syntax](#Basic Syntax)
+  - [Idioms](#Idioms)
+  - [Coding Convention](#Coding Convention)
+-  
 
+# Refs/Links
+- [Official Kotlin Reference](https://kotlinlang.org/docs/reference/)
+- 
 
-## Getting Started
-### Links
-- [getting-started](https://kotlinlang.org/docs/tutorials/getting-started.html)
-- [basic-syntax](https://kotlinlang.org/docs/reference/basic-syntax.html)
+# Getting Started
+This section is in package `org.carbon.handson.ref1`
+ 
+## Basic Syntax
+- [Basic.kt](../blob/)
+
+## Idioms
+- [Idioms.kt]()
+
+## Coding Convention
