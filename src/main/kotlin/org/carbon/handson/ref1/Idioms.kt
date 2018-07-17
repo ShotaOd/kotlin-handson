@@ -1,5 +1,7 @@
 package org.carbon.handson.ref1
 
+import java.time.LocalDateTime
+
 /**
  * @author Soda 2018/07/16.
  */
@@ -32,7 +34,9 @@ fun repeatText(text: String = "", times: Int = 10) = text.repeat(times)
 val countries = listOf("US", "Japan", "German", "France")
 
 fun filterIdiom() {
-    countries.filter { it.contains("a") }
+    countries
+            .filter { it.contains("a") }
+            .forEach { println(it) }
 }
 
 // ===================================================================================
@@ -47,7 +51,7 @@ fun interpolation() {
 // ===================================================================================
 //                                                                      Instance Check
 //                                                                          ==========
-fun checkInstace(obj: Any): String {
+fun checkInstance(obj: Any): String {
     return when (obj) {
         is String -> "obj is character"
         is Int -> "obj is number"
@@ -108,8 +112,17 @@ fun lazyTestFail() {
     val lazyVal: String by lazy {
         throw RuntimeException()
     }
-
     println(lazyVal)
+}
+
+fun useLazyProperty() {
+    lazyTestSuccess()
+
+    try {
+        lazyTestFail()
+    } catch (e: Throwable) {
+        println("[lazy]: lazyTestFail() -> throw RuntimeException")
+    }
 }
 
 // ===================================================================================
@@ -126,6 +139,38 @@ fun String.spaceToCamelCase(): String {
     }
     return result
 }
+
+fun runExtension() {
+    println("""[String.spaceToCamelCase]: Kotlin `"This is an apple".spaceToCamelCase() -> `${"This is an apple".spaceToCamelCase()}""")
+}
+
 fun main(args: Array<String>) {
-    println("This is an apple".spaceToCamelCase())
+
+    useDTO()
+
+    filterIdiom()
+
+    interpolation()
+
+    checkInstance("")
+    checkInstance(LocalDateTime.now())
+
+    traversing()
+
+    useRange()
+
+    useLazyProperty()
+
+    runExtension()
+
+    misc()
+}
+
+// ===================================================================================
+//                                                                          MISC
+//                                                                          ==========
+// int coerce
+infix fun Int.minusGuaranteeNaturalNumber(value: Int): Int = this.minus(value).coerceAtLeast(0)
+fun misc() {
+    println("[Int.minusGuaranteeNaturalNumber]: Kotlin `40 minusGuaranteeNaturalNumber 100` -> ${40 minusGuaranteeNaturalNumber  100}")
 }
